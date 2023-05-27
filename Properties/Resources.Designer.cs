@@ -79,6 +79,15 @@ namespace Notepad.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a auth/.
+        /// </summary>
+        internal static string BEARER_AUTHENTICATION_SUFIX {
+            get {
+                return ResourceManager.GetString("BEARER_AUTHENTICATION_SUFIX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Could not deserialize the response in JSON..
         /// </summary>
         internal static string JSON_DESERIALIZE_ERROR_MESSAGE {
@@ -93,15 +102,6 @@ namespace Notepad.Properties {
         internal static string NO_WEB_SERVICE_CONNECTION_MESSAGE {
             get {
                 return ResourceManager.GetString("NO_WEB_SERVICE_CONNECTION_MESSAGE", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a auth/.
-        /// </summary>
-        internal static string TOKEN_BASED_AUTHENTICATION_SUFIX {
-            get {
-                return ResourceManager.GetString("TOKEN_BASED_AUTHENTICATION_SUFIX", resourceCulture);
             }
         }
     }

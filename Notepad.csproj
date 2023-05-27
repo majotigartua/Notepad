@@ -67,7 +67,17 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Model\Note.cs" />
+    <Compile Include="Model\Notebook.cs" />
+    <Compile Include="Model\Priority.cs" />
     <Compile Include="Model\Response.cs" />
+    <Compile Include="Model\Session.cs" />
+    <Compile Include="Model\User.cs" />
+    <Compile Include="Services\AccessService.cs" />
+    <Compile Include="Services\NotebookService.cs" />
+    <Compile Include="Services\NoteService.cs" />
+    <Compile Include="Services\PriorityService.cs" />
+    <Compile Include="Services\UserService.cs" />
+    <Compile Include="Utilities\Credentials.cs" />
     <Compile Include="Views\LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -100,8 +110,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Services\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -123,13 +123,13 @@
   <data name="BASIC_AUTHENTICATION_SUFIX" xml:space="preserve">
     <value>basic/</value>
   </data>
+  <data name="BEARER_AUTHENTICATION_SUFIX" xml:space="preserve">
+    <value>auth/</value>
+  </data>
   <data name="JSON_DESERIALIZE_ERROR_MESSAGE" xml:space="preserve">
     <value>Could not deserialize the response in JSON.</value>
   </data>
   <data name="NO_WEB_SERVICE_CONNECTION_MESSAGE" xml:space="preserve">
     <value>No connection to the web service.</value>
-  </data>
-  <data name="TOKEN_BASED_AUTHENTICATION_SUFIX" xml:space="preserve">
-    <value>auth/</value>
   </data>
 </root>

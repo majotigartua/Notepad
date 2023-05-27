@@ -22,27 +22,23 @@ namespace Notepad.Services
             credentials = Convert.ToBase64String(Encoding.ASCII.GetBytes($"{username}:{password}"));
         }
 
-        public static async Task<Response> Activate(string cellphoneNumber, string oneTimePassword)
+        public static async Task<Response> Activate(User user)
         {
             string url = string.Concat(URL, "activate");
             Response response = new Response();
-            using (var httpClient = new HttpClient())
+            using (HttpClient httpClient = new HttpClient())
             {
-                HttpRequestMessage httpRequestMessage;
-                HttpResponseMessage httpResponseMessage;
+                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", credentials);
                 try
                 {
-                    httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", credentials);
-                    var user = new User()
+                    HttpRequestMessage httpRequestMessage = new HttpRequestMessage()
                     {
-                        CellphoneNumber = cellphoneNumber,
-                        OneTimePassword = oneTimePassword
+                        Content = new StringContent(JsonConvert.SerializeObject(user), Encoding.UTF8, "application/json"),
+                        Method = HttpMethod.Post,
+                        RequestUri = new Uri(url)
                     };
-                    string json = JsonConvert.SerializeObject(user);
-                    StringContent body = new StringContent(json, Encoding.UTF8, "application/json");
-                    httpRequestMessage = new HttpRequestMessage(HttpMethod.Post, url);
                     httpRequestMessage.Headers.Add("Origin", Credentials.ORIGIN);
-                    httpResponseMessage = await httpClient.PostAsync(url, body);
+                    HttpResponseMessage httpResponseMessage = await httpClient.SendAsync(httpRequestMessage);
                     if (httpResponseMessage != null)
                     {
                         if (httpResponseMessage.IsSuccessStatusCode)
@@ -54,12 +50,12 @@ namespace Notepad.Services
                                 response.Error = true;
                                 response.Message = Properties.Resources.JSON_DESERIALIZE_ERROR_MESSAGE;
                             }
-                        } 
+                        }
                         else
                         {
+                            response.Error = true;
                             HttpStatusCode httpStatusCode = httpResponseMessage.StatusCode;
                             response.Code = (int)httpStatusCode;
-                            response.Error = true;
                             response.Message = httpStatusCode.ToString();
                         }
                     }
@@ -67,7 +63,110 @@ namespace Notepad.Services
                     {
                         response.Error = true;
                         response.Message = Properties.Resources.NO_WEB_SERVICE_CONNECTION_MESSAGE;
+                    }
+                }
+                catch (Exception exception)
+                {
+                    response.Error = true;
+                    response.Message = exception.Message;
+                }
+            }
+            return response;
+        }
 
+        public static async Task<Response> Login(User user)
+        {
+            string url = string.Concat(URL, "login");
+            Response response = new Response();
+            using (HttpClient httpClient = new HttpClient())
+            {
+                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", credentials);
+                try
+                {
+                    HttpRequestMessage httpRequestMessage = new HttpRequestMessage()
+                    {
+                        Content = new StringContent(JsonConvert.SerializeObject(user), Encoding.UTF8, "application/json"),
+                        Method = HttpMethod.Post,
+                        RequestUri = new Uri(url)
+                    };
+                    httpRequestMessage.Headers.Add("Origin", Credentials.ORIGIN);
+                    HttpResponseMessage httpResponseMessage = await httpClient.SendAsync(httpRequestMessage);
+                    if (httpResponseMessage != null)
+                    {
+                        if (httpResponseMessage.IsSuccessStatusCode)
+                        {
+                            string content = await httpResponseMessage.Content.ReadAsStringAsync();
+                            response = JsonConvert.DeserializeObject<Response>(content);
+                            if (response == null)
+                            {
+                                response.Error = true;
+                                response.Message = Properties.Resources.JSON_DESERIALIZE_ERROR_MESSAGE;
+                            }
+                        }
+                        else
+                        {
+                            response.Error = true;
+                            HttpStatusCode httpStatusCode = httpResponseMessage.StatusCode;
+                            response.Code = (int)httpStatusCode;
+                            response.Message = httpStatusCode.ToString();
+                        }
+                    }
+                    else
+                    {
+                        response.Error = true;
+                        response.Message = Properties.Resources.NO_WEB_SERVICE_CONNECTION_MESSAGE;
+                    }
+                }
+                catch (Exception exception)
+                {
+                    response.Error = true;
+                    response.Message = exception.Message;
+                }
+            }
+            return response;
+        }
+
+        public static async Task<Response> SignUp(User user)
+        {
+            string url = string.Concat(URL, "login");
+            Response response = new Response();
+            using (HttpClient httpClient = new HttpClient())
+            {
+                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", credentials);
+                try
+                {
+                    HttpRequestMessage httpRequestMessage = new HttpRequestMessage()
+                    {
+                        Content = new StringContent(JsonConvert.SerializeObject(user), Encoding.UTF8, "application/json"),
+                        Method = HttpMethod.Post,
+                        RequestUri = new Uri(url)
+                    };
+                    httpRequestMessage.Headers.Add("Origin", Credentials.ORIGIN);
+                    HttpResponseMessage httpResponseMessage = await httpClient.SendAsync(httpRequestMessage);
+                    if (httpResponseMessage != null)
+                    {
+                        if (httpResponseMessage.IsSuccessStatusCode)
+                        {
+                            string content = await httpResponseMessage.Content.ReadAsStringAsync();
+                            response = JsonConvert.DeserializeObject<Response>(content);
+                            if (response == null)
+                            {
+                                response.Error = true;
+                                response.Message = Properties.Resources.JSON_DESERIALIZE_ERROR_MESSAGE;
+                            }
+                        }
+                        else
+                        {
+                            response.Error = true;
+                            HttpStatusCode httpStatusCode = httpResponseMessage.StatusCode;
+                            response.Code = (int)httpStatusCode;
+                            response.Message = httpStatusCode.ToString();
+                        }
+                    }
+                    else
+                    {
+                        response.Error = true;
+                        response.Message = Properties.Resources.NO_WEB_SERVICE_CONNECTION_MESSAGE;
                     }
                 }
                 catch (Exception exception)
