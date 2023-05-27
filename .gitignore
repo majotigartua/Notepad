@@ -1,5 +1,5 @@
-*/bin/
-*/obj/
-*/packages/
-*/.vs/
+/bin/
+/obj/
+/packages/
+/.vs/
 /Utilities/Credentials.cs
