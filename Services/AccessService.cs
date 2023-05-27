@@ -7,31 +7,26 @@ using Newtonsoft.Json;
 using System.Text;
 using System.Net.Http.Headers;
 using System.Net;
+using System.Windows;
+using System.Collections.Generic;
 
 namespace Notepad.Services
 {
     public class AccessService
     {
         private static readonly string URL = string.Concat(Properties.Resources.BASE_URL, Properties.Resources.BASIC_AUTHENTICATION_SUFIX);
-        private static string credentials;
-
-        AccessService()
-        {
-            string username = Credentials.USERNAME;
-            string password = Credentials.PASSWORD;
-            credentials = Convert.ToBase64String(Encoding.ASCII.GetBytes($"{username}:{password}"));
-        }
+        private static readonly string CREDENTIALS = Convert.ToBase64String(Encoding.ASCII.GetBytes($"{Credentials.USERNAME}:{Credentials.PASSWORD}"));
 
         public static async Task<Response> Activate(User user)
         {
             string url = string.Concat(URL, "activate");
             Response response = new Response();
-            using (HttpClient httpClient = new HttpClient())
+            using (var httpClient = new HttpClient())
             {
-                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", credentials);
+                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", CREDENTIALS);
                 try
                 {
-                    HttpRequestMessage httpRequestMessage = new HttpRequestMessage()
+                    var httpRequestMessage = new HttpRequestMessage()
                     {
                         Content = new StringContent(JsonConvert.SerializeObject(user), Encoding.UTF8, "application/json"),
                         Method = HttpMethod.Post,
@@ -41,22 +36,13 @@ namespace Notepad.Services
                     HttpResponseMessage httpResponseMessage = await httpClient.SendAsync(httpRequestMessage);
                     if (httpResponseMessage != null)
                     {
-                        if (httpResponseMessage.IsSuccessStatusCode)
-                        {
-                            string content = await httpResponseMessage.Content.ReadAsStringAsync();
-                            response = JsonConvert.DeserializeObject<Response>(content);
-                            if (response == null)
-                            {
-                                response.Error = true;
-                                response.Message = Properties.Resources.JSON_DESERIALIZE_ERROR_MESSAGE;
-                            }
-                        }
-                        else
+                        string content = await httpResponseMessage.Content.ReadAsStringAsync();
+                        MessageBox.Show(content);
+                        response = JsonConvert.DeserializeObject<Response>(content);
+                        if (response == null)
                         {
                             response.Error = true;
-                            HttpStatusCode httpStatusCode = httpResponseMessage.StatusCode;
-                            response.Code = (int)httpStatusCode;
-                            response.Message = httpStatusCode.ToString();
+                            response.Message = Properties.Resources.JSON_DESERIALIZE_ERROR_MESSAGE;
                         }
                     }
                     else
@@ -78,12 +64,12 @@ namespace Notepad.Services
         {
             string url = string.Concat(URL, "login");
             Response response = new Response();
-            using (HttpClient httpClient = new HttpClient())
+            using (var httpClient = new HttpClient())
             {
-                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", credentials);
+                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", CREDENTIALS);
                 try
                 {
-                    HttpRequestMessage httpRequestMessage = new HttpRequestMessage()
+                    var httpRequestMessage = new HttpRequestMessage()
                     {
                         Content = new StringContent(JsonConvert.SerializeObject(user), Encoding.UTF8, "application/json"),
                         Method = HttpMethod.Post,
@@ -93,22 +79,13 @@ namespace Notepad.Services
                     HttpResponseMessage httpResponseMessage = await httpClient.SendAsync(httpRequestMessage);
                     if (httpResponseMessage != null)
                     {
-                        if (httpResponseMessage.IsSuccessStatusCode)
-                        {
-                            string content = await httpResponseMessage.Content.ReadAsStringAsync();
-                            response = JsonConvert.DeserializeObject<Response>(content);
-                            if (response == null)
-                            {
-                                response.Error = true;
-                                response.Message = Properties.Resources.JSON_DESERIALIZE_ERROR_MESSAGE;
-                            }
-                        }
-                        else
+                        string content = await httpResponseMessage.Content.ReadAsStringAsync();
+                        MessageBox.Show(content);
+                        response = JsonConvert.DeserializeObject<Response>(content);
+                        if (response == null)
                         {
                             response.Error = true;
-                            HttpStatusCode httpStatusCode = httpResponseMessage.StatusCode;
-                            response.Code = (int)httpStatusCode;
-                            response.Message = httpStatusCode.ToString();
+                            response.Message = Properties.Resources.JSON_DESERIALIZE_ERROR_MESSAGE;
                         }
                     }
                     else
@@ -128,14 +105,14 @@ namespace Notepad.Services
 
         public static async Task<Response> SignUp(User user)
         {
-            string url = string.Concat(URL, "login");
+            string url = string.Concat(URL, "signup");
             Response response = new Response();
-            using (HttpClient httpClient = new HttpClient())
+            using (var httpClient = new HttpClient())
             {
-                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", credentials);
+                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", CREDENTIALS);
                 try
                 {
-                    HttpRequestMessage httpRequestMessage = new HttpRequestMessage()
+                    var httpRequestMessage = new HttpRequestMessage()
                     {
                         Content = new StringContent(JsonConvert.SerializeObject(user), Encoding.UTF8, "application/json"),
                         Method = HttpMethod.Post,
@@ -145,22 +122,13 @@ namespace Notepad.Services
                     HttpResponseMessage httpResponseMessage = await httpClient.SendAsync(httpRequestMessage);
                     if (httpResponseMessage != null)
                     {
-                        if (httpResponseMessage.IsSuccessStatusCode)
-                        {
-                            string content = await httpResponseMessage.Content.ReadAsStringAsync();
-                            response = JsonConvert.DeserializeObject<Response>(content);
-                            if (response == null)
-                            {
-                                response.Error = true;
-                                response.Message = Properties.Resources.JSON_DESERIALIZE_ERROR_MESSAGE;
-                            }
-                        }
-                        else
+                        string content = await httpResponseMessage.Content.ReadAsStringAsync();
+                        MessageBox.Show(content);
+                        response = JsonConvert.DeserializeObject<Response>(content);
+                        if (response == null)
                         {
                             response.Error = true;
-                            HttpStatusCode httpStatusCode = httpResponseMessage.StatusCode;
-                            response.Code = (int)httpStatusCode;
-                            response.Message = httpStatusCode.ToString();
+                            response.Message = Properties.Resources.JSON_DESERIALIZE_ERROR_MESSAGE;
                         }
                     }
                     else

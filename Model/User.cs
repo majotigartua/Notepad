@@ -29,5 +29,10 @@ namespace Notepad.Model
         public string OneTimePassword { get; set; }
         [JsonProperty("activationDate")]
         public DateTime ActivationDate { get; set; }
+
+        public override string ToString()
+        {
+            return string.Concat(Name, " ", PaternalSurname, " ", MaternalSurname);
+        }
     }
 }

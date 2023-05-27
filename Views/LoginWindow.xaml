@@ -3,9 +3,16 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:p="clr-namespace:Notepad.Properties"
         mc:Ignorable="d"
-        Title="Iniciar sesión" Height="450" Width="800">
+        Title="Login" Height="450" Width="800">
     <Grid>
-        
+        <Label Content="Login." HorizontalAlignment="Center" Margin="0,75,0,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="36"/>
+        <Label Content="Cellphone number:" HorizontalAlignment="Left" Margin="150,155,0,0" VerticalAlignment="Top" FontSize="20" FontFamily="Arial"/>
+        <TextBox x:Name="CellphoneNumberTextBox" HorizontalAlignment="Left" Margin="355,158,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Arial" FontSize="20" Width="250" Height="30"/>
+        <Label Content="Password:" HorizontalAlignment="Left" Margin="225,215,0,0" VerticalAlignment="Top" FontSize="20" FontFamily="Arial"/>
+        <PasswordBox x:Name="PasswordBox" HorizontalAlignment="Left" Margin="355,218,0,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="20" Width="250" Height="30"/>
+        <Button x:Name="LoginButton" Content="Login" HorizontalAlignment="Center" Margin="0,285,0,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="20"  Width="250" Height="30" Click="LoginButtonClick"/>
+        <Button x:Name="SignUpButton" Content="Sign up" HorizontalAlignment="Center" Margin="0,360,0,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="20"  Width="250" Height="30" Click="SignUpButtonClick"/>
     </Grid>
 </Window>

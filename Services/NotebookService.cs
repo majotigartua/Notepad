@@ -7,6 +7,7 @@ using System.Net;
 using System.Text;
 using System;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace Notepad.Services
 {
@@ -18,12 +19,12 @@ namespace Notepad.Services
         {
             string url = string.Concat(URL, "delete");
             Response response = new Response();
-            using (HttpClient httpClient = new HttpClient())
+            using (var httpClient = new HttpClient())
             {
                 httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Credentials.ACCESS_TOKEN);
                 try
                 {
-                    HttpRequestMessage httpRequestMessage = new HttpRequestMessage()
+                    var httpRequestMessage = new HttpRequestMessage()
                     {
                         Content = new StringContent(JsonConvert.SerializeObject(notebook), Encoding.UTF8, "application/json"),
                         Method = HttpMethod.Delete,
@@ -33,22 +34,13 @@ namespace Notepad.Services
                     HttpResponseMessage httpResponseMessage = await httpClient.SendAsync(httpRequestMessage);
                     if (httpResponseMessage != null)
                     {
-                        if (httpResponseMessage.IsSuccessStatusCode)
-                        {
-                            string content = await httpResponseMessage.Content.ReadAsStringAsync();
-                            response = JsonConvert.DeserializeObject<Response>(content);
-                            if (response == null)
-                            {
-                                response.Error = true;
-                                response.Message = Properties.Resources.JSON_DESERIALIZE_ERROR_MESSAGE;
-                            }
-                        }
-                        else
+                        string content = await httpResponseMessage.Content.ReadAsStringAsync();
+                        MessageBox.Show(content);
+                        response = JsonConvert.DeserializeObject<Response>(content);
+                        if (response == null)
                         {
                             response.Error = true;
-                            HttpStatusCode httpStatusCode = httpResponseMessage.StatusCode;
-                            response.Code = (int)httpStatusCode;
-                            response.Message = httpStatusCode.ToString();
+                            response.Message = Properties.Resources.JSON_DESERIALIZE_ERROR_MESSAGE;
                         }
                     }
                     else
@@ -70,32 +62,23 @@ namespace Notepad.Services
         {
             string url = string.Concat(URL, "get/", idUser);
             Response response = new Response();
-            using (HttpClient httpClient = new HttpClient())
+            using (var httpClient = new HttpClient())
             {
                 httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Credentials.ACCESS_TOKEN);
                 try
                 {
-                    HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Get, url);
+                    var httpRequestMessage = new HttpRequestMessage(HttpMethod.Get, new Uri(url));
                     httpRequestMessage.Headers.Add("Origin", Credentials.ORIGIN);
                     HttpResponseMessage httpResponseMessage = await httpClient.SendAsync(httpRequestMessage);
                     if (httpResponseMessage != null)
                     {
-                        if (httpResponseMessage.IsSuccessStatusCode)
-                        {
-                            string content = await httpResponseMessage.Content.ReadAsStringAsync();
-                            response = JsonConvert.DeserializeObject<Response>(content);
-                            if (response == null)
-                            {
-                                response.Error = true;
-                                response.Message = Properties.Resources.JSON_DESERIALIZE_ERROR_MESSAGE;
-                            }
-                        }
-                        else
+                        string content = await httpResponseMessage.Content.ReadAsStringAsync();
+                        MessageBox.Show(content);
+                        response = JsonConvert.DeserializeObject<Response>(content);
+                        if (response == null)
                         {
                             response.Error = true;
-                            HttpStatusCode httpStatusCode = httpResponseMessage.StatusCode;
-                            response.Code = (int)httpStatusCode;
-                            response.Message = httpStatusCode.ToString();
+                            response.Message = Properties.Resources.JSON_DESERIALIZE_ERROR_MESSAGE;
                         }
                     }
                     else
@@ -117,12 +100,12 @@ namespace Notepad.Services
         {
             string url = string.Concat(URL, "log");
             Response response = new Response();
-            using (HttpClient httpClient = new HttpClient())
+            using (var httpClient = new HttpClient())
             {
                 httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Credentials.ACCESS_TOKEN);
                 try
                 {
-                    HttpRequestMessage httpRequestMessage = new HttpRequestMessage()
+                    var httpRequestMessage = new HttpRequestMessage()
                     {
                         Content = new StringContent(JsonConvert.SerializeObject(notebook), Encoding.UTF8, "application/json"),
                         Method = HttpMethod.Post,
@@ -132,22 +115,13 @@ namespace Notepad.Services
                     HttpResponseMessage httpResponseMessage = await httpClient.SendAsync(httpRequestMessage);
                     if (httpResponseMessage != null)
                     {
-                        if (httpResponseMessage.IsSuccessStatusCode)
-                        {
-                            string content = await httpResponseMessage.Content.ReadAsStringAsync();
-                            response = JsonConvert.DeserializeObject<Response>(content);
-                            if (response == null)
-                            {
-                                response.Error = true;
-                                response.Message = Properties.Resources.JSON_DESERIALIZE_ERROR_MESSAGE;
-                            }
-                        }
-                        else
+                        string content = await httpResponseMessage.Content.ReadAsStringAsync();
+                        MessageBox.Show(content);
+                        response = JsonConvert.DeserializeObject<Response>(content);
+                        if (response == null)
                         {
                             response.Error = true;
-                            HttpStatusCode httpStatusCode = httpResponseMessage.StatusCode;
-                            response.Code = (int)httpStatusCode;
-                            response.Message = httpStatusCode.ToString();
+                            response.Message = Properties.Resources.JSON_DESERIALIZE_ERROR_MESSAGE;
                         }
                     }
                     else
@@ -169,12 +143,12 @@ namespace Notepad.Services
         {
             string url = string.Concat(URL, "update");
             Response response = new Response();
-            using (HttpClient httpClient = new HttpClient())
+            using (var httpClient = new HttpClient())
             {
                 httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Credentials.ACCESS_TOKEN);
                 try
                 {
-                    HttpRequestMessage httpRequestMessage = new HttpRequestMessage()
+                    var httpRequestMessage = new HttpRequestMessage()
                     {
                         Content = new StringContent(JsonConvert.SerializeObject(notebook), Encoding.UTF8, "application/json"),
                         Method = HttpMethod.Put,
@@ -184,22 +158,13 @@ namespace Notepad.Services
                     HttpResponseMessage httpResponseMessage = await httpClient.SendAsync(httpRequestMessage);
                     if (httpResponseMessage != null)
                     {
-                        if (httpResponseMessage.IsSuccessStatusCode)
-                        {
-                            string content = await httpResponseMessage.Content.ReadAsStringAsync();
-                            response = JsonConvert.DeserializeObject<Response>(content);
-                            if (response == null)
-                            {
-                                response.Error = true;
-                                response.Message = Properties.Resources.JSON_DESERIALIZE_ERROR_MESSAGE;
-                            }
-                        }
-                        else
+                        string content = await httpResponseMessage.Content.ReadAsStringAsync();
+                        MessageBox.Show(content);
+                        response = JsonConvert.DeserializeObject<Response>(content);
+                        if (response == null)
                         {
                             response.Error = true;
-                            HttpStatusCode httpStatusCode = httpResponseMessage.StatusCode;
-                            response.Code = (int)httpStatusCode;
-                            response.Message = httpStatusCode.ToString();
+                            response.Message = Properties.Resources.JSON_DESERIALIZE_ERROR_MESSAGE;
                         }
                     }
                     else
