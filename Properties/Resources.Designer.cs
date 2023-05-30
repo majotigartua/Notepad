@@ -61,6 +61,33 @@ namespace Notepad.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Accept.
+        /// </summary>
+        public static string ACCEPT_BUTTON {
+            get {
+                return ResourceManager.GetString("ACCEPT_BUTTON", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Activate.
+        /// </summary>
+        public static string ACTIVATE_BUTTON {
+            get {
+                return ResourceManager.GetString("ACTIVATE_BUTTON", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Activate..
+        /// </summary>
+        public static string ACTIVATE_WINDOW_TITLE {
+            get {
+                return ResourceManager.GetString("ACTIVATE_WINDOW_TITLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a http://localhost:8084/NotepadWebService/api/.
         /// </summary>
         public static string BASE_URL {
@@ -84,6 +111,15 @@ namespace Notepad.Properties {
         public static string BEARER_AUTHENTICATION_SUFIX {
             get {
                 return ResourceManager.GetString("BEARER_AUTHENTICATION_SUFIX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Cancel.
+        /// </summary>
+        public static string CANCEL_BUTTON {
+            get {
+                return ResourceManager.GetString("CANCEL_BUTTON", resourceCulture);
             }
         }
         
@@ -142,11 +178,38 @@ namespace Notepad.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Maternal surname:.
+        /// </summary>
+        public static string MATERNAL_SURNAME_LABEL {
+            get {
+                return ResourceManager.GetString("MATERNAL_SURNAME_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Name:.
+        /// </summary>
+        public static string NAME_LABEL {
+            get {
+                return ResourceManager.GetString("NAME_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a No connection to the web service..
         /// </summary>
         public static string NO_WEB_SERVICE_CONNECTION_MESSAGE {
             get {
                 return ResourceManager.GetString("NO_WEB_SERVICE_CONNECTION_MESSAGE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a One time password: .
+        /// </summary>
+        public static string ONE_TIME_PASSWORD_LABEL {
+            get {
+                return ResourceManager.GetString("ONE_TIME_PASSWORD_LABEL", resourceCulture);
             }
         }
         
@@ -160,11 +223,29 @@ namespace Notepad.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Paternal surname:.
+        /// </summary>
+        public static string PATERNAL_SURNAME_LABEL {
+            get {
+                return ResourceManager.GetString("PATERNAL_SURNAME_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Sign up.
         /// </summary>
         public static string SIGN_UP_BUTTON {
             get {
                 return ResourceManager.GetString("SIGN_UP_BUTTON", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Sign up..
+        /// </summary>
+        public static string SIGN_UP_WINDOW_TITTLE {
+            get {
+                return ResourceManager.GetString("SIGN_UP_WINDOW_TITTLE", resourceCulture);
             }
         }
         

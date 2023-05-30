@@ -29,7 +29,6 @@ namespace Notepad.Services
                     if (httpResponseMessage != null)
                     {
                         string content = await httpResponseMessage.Content.ReadAsStringAsync();
-                        MessageBox.Show(content);
                         response = JsonConvert.DeserializeObject<Response>(content);
                         if (response == null)
                         {

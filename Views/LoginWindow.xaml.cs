@@ -1,8 +1,6 @@
 ﻿using Notepad.Model;
 using Notepad.Services;
-using Notepad.Utilities;
-using System;
-using System.Threading.Tasks;
+using Notepad.Views;
 using System.Windows;
 
 namespace Notepad
@@ -14,11 +12,17 @@ namespace Notepad
             InitializeComponent();
         }
 
+        private void ActivateButtonClick(object sender, RoutedEventArgs e)
+        {
+            var activateWindow = new ActivateWindow();
+            activateWindow.ShowDialog();
+        }
+
         private void LoginButtonClick(object sender, RoutedEventArgs e)
         {
             string cellphoneNumber = CellphoneNumberTextBox.Text;
             string password = PasswordBox.Password.ToString();
-            if (!string.IsNullOrEmpty(cellphoneNumber) && !string.IsNullOrEmpty(password))
+            if (!string.IsNullOrWhiteSpace(cellphoneNumber) && !string.IsNullOrWhiteSpace(password))
             {
                 password = Utilities.Utilities.ComputeSHA256Hash(password);
                 var user = new User()
@@ -51,7 +55,8 @@ namespace Notepad
 
         private void SignUpButtonClick(object sender, RoutedEventArgs e)
         {
-
+            var signUpWindow =  new SignUpWindow();
+            signUpWindow.ShowDialog();
         }
     }
 }

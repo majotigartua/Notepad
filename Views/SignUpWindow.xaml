@@ -1,0 +1,24 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:p="clr-namespace:Notepad.Properties" x:Class="Notepad.Views.SignUpWindow"
+        mc:Ignorable="d"
+        Title="{x:Static p:Resources.SIGN_UP_WINDOW_TITTLE}" Height="450" Width="800">
+    <Grid>
+        <Label Content="{x:Static p:Resources.SIGN_UP_WINDOW_TITTLE}" HorizontalAlignment="Center" Margin="0,45,0,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="36"/>
+        <Label Content="{x:Static p:Resources.NAME_LABEL}" HorizontalAlignment="Left" Margin="150,125,0,0" VerticalAlignment="Top" FontSize="20" FontFamily="Arial"/>
+        <TextBox x:Name="NameTextBox" HorizontalAlignment="Left" Margin="248,128,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Arial" FontSize="20" Width="415" Height="30"/>
+        <Label Content="{x:Static p:Resources.PATERNAL_SURNAME_LABEL}" HorizontalAlignment="Left" Margin="150,170,0,0" VerticalAlignment="Top" FontSize="20" FontFamily="Arial"/>
+        <TextBox x:Name="PaternalSurnameTextBox" HorizontalAlignment="Left" Margin="348,173,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Arial" FontSize="20" Width="315" Height="30"/>
+        <Label Content="{x:Static p:Resources.MATERNAL_SURNAME_LABEL}" HorizontalAlignment="Left" Margin="150,215,0,0" VerticalAlignment="Top" FontSize="20" FontFamily="Arial"/>
+        <TextBox x:Name="MaternalSurnameTextBox" HorizontalAlignment="Left" Margin="348,216,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Arial" FontSize="20" Width="315" Height="30"/>
+        <Label Content="{x:Static p:Resources.PASSWORD_LABEL}" HorizontalAlignment="Left" Margin="150,305,0,0" VerticalAlignment="Top" FontSize="20" FontFamily="Arial"/>
+        <TextBox x:Name="CellphoneNumberTextBox" HorizontalAlignment="Left" Margin="348,261,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Arial" FontSize="20" Width="315" Height="30"/>
+        <Label Content="{x:Static p:Resources.CELLPHONE_NUMBER_LABEL}" HorizontalAlignment="Left" Margin="150,260,0,0" VerticalAlignment="Top" FontSize="20" FontFamily="Arial"/>
+        <PasswordBox x:Name="PasswordBox" HorizontalAlignment="Left" Margin="275,308,0,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="20" Width="388" Height="30"/>
+        <Button Content="{x:Static p:Resources.CANCEL_BUTTON}" HorizontalAlignment="Left" Margin="75,375,0,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="20"  Width="150" Height="30" Click="CancelButtonClick"/>
+        <Button Content="{x:Static p:Resources.ACCEPT_BUTTON}" HorizontalAlignment="Left" Margin="575,375,0,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="20"  Width="150" Height="30" Click="AcceptButtonClick"/>
+    </Grid>
+</Window>

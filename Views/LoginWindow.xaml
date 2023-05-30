@@ -5,14 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:p="clr-namespace:Notepad.Properties"
         mc:Ignorable="d"
-        Title="Login" Height="450" Width="800">
+        Title="{x:Static p:Resources.LOGIN_WINDOW_TITLE}" Height="450" Width="800">
     <Grid>
-        <Label Content="Login." HorizontalAlignment="Center" Margin="0,75,0,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="36"/>
-        <Label Content="Cellphone number:" HorizontalAlignment="Left" Margin="150,155,0,0" VerticalAlignment="Top" FontSize="20" FontFamily="Arial"/>
-        <TextBox x:Name="CellphoneNumberTextBox" HorizontalAlignment="Left" Margin="355,158,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Arial" FontSize="20" Width="250" Height="30"/>
-        <Label Content="Password:" HorizontalAlignment="Left" Margin="225,215,0,0" VerticalAlignment="Top" FontSize="20" FontFamily="Arial"/>
-        <PasswordBox x:Name="PasswordBox" HorizontalAlignment="Left" Margin="355,218,0,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="20" Width="250" Height="30"/>
-        <Button x:Name="LoginButton" Content="Login" HorizontalAlignment="Center" Margin="0,285,0,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="20"  Width="250" Height="30" Click="LoginButtonClick"/>
-        <Button x:Name="SignUpButton" Content="Sign up" HorizontalAlignment="Center" Margin="0,360,0,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="20"  Width="250" Height="30" Click="SignUpButtonClick"/>
+        <Label Content="{x:Static p:Resources.LOGIN_WINDOW_TITLE}" HorizontalAlignment="Center" Margin="0,65,0,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="36"/>
+        <Label Content="{x:Static p:Resources.CELLPHONE_NUMBER_LABEL}" HorizontalAlignment="Left" Margin="150,145,0,0" VerticalAlignment="Top" FontSize="20" FontFamily="Arial"/>
+        <TextBox x:Name="CellphoneNumberTextBox" HorizontalAlignment="Left" Margin="355,148,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Arial" FontSize="20" Width="250" Height="30"/>
+        <Label Content="{x:Static p:Resources.PASSWORD_LABEL}" HorizontalAlignment="Left" Margin="225,205,0,0" VerticalAlignment="Top" FontSize="20" FontFamily="Arial"/>
+        <PasswordBox x:Name="PasswordBox" HorizontalAlignment="Left" Margin="355,208,0,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="20" Width="250" Height="30"/>
+        <Button Content="{x:Static p:Resources.LOGIN_BUTTON}" HorizontalAlignment="Center" Margin="0,285,0,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="20"  Width="250" Height="30" Click="LoginButtonClick"/>
+        <Button Content="{x:Static p:Resources.SIGN_UP_BUTTON}" HorizontalAlignment="Center" Margin="0,360,0,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="20"  Width="250" Height="30" Click="SignUpButtonClick"/>
+        <Button Content="{x:Static p:Resources.ACTIVATE_BUTTON}" HorizontalAlignment="Left" Margin="515,30,0,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="20"  Width="250" Height="30" Click="ActivateButtonClick"/>
     </Grid>
 </Window>
