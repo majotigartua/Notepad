@@ -36,22 +36,13 @@ namespace Notepad.Services
                     {
                         string content = await httpResponseMessage.Content.ReadAsStringAsync();
                         response = JsonConvert.DeserializeObject<Response>(content);
-                        if (response == null)
-                        {
-                            response.Error = true;
-                            response.Message = Properties.Resources.JSON_DESERIALIZE_ERROR_MESSAGE;
-                        }
-                    }
-                    else
-                    {
-                        response.Error = true;
-                        response.Message = Properties.Resources.NO_WEB_SERVICE_CONNECTION_MESSAGE;
                     }
                 }
-                catch (Exception exception)
+                catch (Exception)
                 {
                     response.Error = true;
-                    response.Message = exception.Message;
+                    response.Code = (int)HttpStatusCode.BadGateway;
+                    response.Message = Properties.Resources.NO_WEB_SERVICE_CONNECTION_MESSAGE;
                 }
             }
             return response;

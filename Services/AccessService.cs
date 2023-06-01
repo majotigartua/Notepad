@@ -23,9 +23,9 @@ namespace Notepad.Services
             Response response = new Response();
             using (var httpClient = new HttpClient())
             {
-                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", CREDENTIALS);
                 try
                 {
+                    httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", CREDENTIALS);
                     var httpRequestMessage = new HttpRequestMessage()
                     {
                         Content = new StringContent(JsonConvert.SerializeObject(user), Encoding.UTF8, "application/json"),
@@ -38,22 +38,13 @@ namespace Notepad.Services
                     {
                         string content = await httpResponseMessage.Content.ReadAsStringAsync();
                         response = JsonConvert.DeserializeObject<Response>(content);
-                        if (response == null)
-                        {
-                            response.Error = true;
-                            response.Message = Properties.Resources.JSON_DESERIALIZE_ERROR_MESSAGE;
-                        }
-                    }
-                    else
-                    {
-                        response.Error = true;
-                        response.Message = Properties.Resources.NO_WEB_SERVICE_CONNECTION_MESSAGE;
                     }
                 }
-                catch (Exception exception)
+                catch (Exception)
                 {
                     response.Error = true;
-                    response.Message = exception.Message;
+                    response.Code = (int)HttpStatusCode.BadGateway;
+                    response.Message = Properties.Resources.NO_WEB_SERVICE_CONNECTION_MESSAGE;
                 }
             }
             return response;
@@ -65,9 +56,9 @@ namespace Notepad.Services
             Response response = new Response();
             using (var httpClient = new HttpClient())
             {
-                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", CREDENTIALS);
                 try
                 {
+                    httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", CREDENTIALS);
                     var httpRequestMessage = new HttpRequestMessage()
                     {
                         Content = new StringContent(JsonConvert.SerializeObject(user), Encoding.UTF8, "application/json"),
@@ -80,22 +71,13 @@ namespace Notepad.Services
                     {
                         string content = await httpResponseMessage.Content.ReadAsStringAsync();
                         response = JsonConvert.DeserializeObject<Response>(content);
-                        if (response == null)
-                        {
-                            response.Error = true;
-                            response.Message = Properties.Resources.JSON_DESERIALIZE_ERROR_MESSAGE;
-                        }
-                    }
-                    else
-                    {
-                        response.Error = true;
-                        response.Message = Properties.Resources.NO_WEB_SERVICE_CONNECTION_MESSAGE;
                     }
                 }
-                catch (Exception exception)
+                catch (Exception)
                 {
                     response.Error = true;
-                    response.Message = exception.Message;
+                    response.Code = (int)HttpStatusCode.BadGateway;
+                    response.Message = Properties.Resources.NO_WEB_SERVICE_CONNECTION_MESSAGE;
                 }
             }
             return response;
@@ -107,9 +89,9 @@ namespace Notepad.Services
             Response response = new Response();
             using (var httpClient = new HttpClient())
             {
-                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", CREDENTIALS);
                 try
                 {
+                    httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", CREDENTIALS);
                     var httpRequestMessage = new HttpRequestMessage()
                     {
                         Content = new StringContent(JsonConvert.SerializeObject(user), Encoding.UTF8, "application/json"),
@@ -122,22 +104,13 @@ namespace Notepad.Services
                     {
                         string content = await httpResponseMessage.Content.ReadAsStringAsync();
                         response = JsonConvert.DeserializeObject<Response>(content);
-                        if (response == null)
-                        {
-                            response.Error = true;
-                            response.Message = Properties.Resources.JSON_DESERIALIZE_ERROR_MESSAGE;
-                        }
-                    }
-                    else
-                    {
-                        response.Error = true;
-                        response.Message = Properties.Resources.NO_WEB_SERVICE_CONNECTION_MESSAGE;
                     }
                 }
-                catch (Exception exception)
+                catch (Exception)
                 {
                     response.Error = true;
-                    response.Message = exception.Message;
+                    response.Code = (int)HttpStatusCode.BadGateway;
+                    response.Message = Properties.Resources.NO_WEB_SERVICE_CONNECTION_MESSAGE;
                 }
             }
             return response;

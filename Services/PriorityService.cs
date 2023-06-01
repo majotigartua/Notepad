@@ -20,9 +20,9 @@ namespace Notepad.Services
             Response response = new Response();
             using (var httpClient = new HttpClient())
             {
-                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Credentials.ACCESS_TOKEN);
                 try
                 {
+                    httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Credentials.ACCESS_TOKEN);
                     var httpRequestMessage = new HttpRequestMessage(HttpMethod.Get, new Uri(url));
                     httpRequestMessage.Headers.Add("Origin", Credentials.ORIGIN);
                     HttpResponseMessage httpResponseMessage = await httpClient.SendAsync(httpRequestMessage);
@@ -30,22 +30,17 @@ namespace Notepad.Services
                     {
                         string content = await httpResponseMessage.Content.ReadAsStringAsync();
                         response = JsonConvert.DeserializeObject<Response>(content);
-                        if (response == null)
-                        {
-                            response.Error = true;
-                            response.Message = Properties.Resources.JSON_DESERIALIZE_ERROR_MESSAGE;
-                        }
                     }
                     else
                     {
                         response.Error = true;
+                        response.Code = (int)HttpStatusCode.BadGateway;
                         response.Message = Properties.Resources.NO_WEB_SERVICE_CONNECTION_MESSAGE;
                     }
                 }
                 catch (Exception exception)
                 {
-                    response.Error = true;
-                    response.Message = exception.Message;
+                    Console.WriteLine(exception.Message);
                 }
             }
             return response;

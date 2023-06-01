@@ -42,14 +42,15 @@ namespace Notepad
         private async void Login(User user)
         {
             Response response = await AccessService.Login(user);
+            MessageBox.Show(response.ToString());
             if (!response.Error)
             {
-                user = response.User;
-                MessageBox.Show(string.Concat(Properties.Resources.WELCOME_LABEL, user, "!"));
+
             }
             else
             {
-                MessageBox.Show(response.Message);
+                CellphoneNumberTextBox.Clear();
+                PasswordBox.Clear();
             }
         }
 

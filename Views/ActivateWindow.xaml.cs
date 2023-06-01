@@ -39,11 +39,11 @@ namespace Notepad.Views
         private async void Activate(User user)
         {
             Response response = await AccessService.Activate(user);
-            MessageBox.Show(response.Message);
+            MessageBox.Show(response.ToString());
             if (!response.Error)
             {
                 Close();
-            } 
+            }
             else
             {
                 CellphoneNumberTextBox.Clear();

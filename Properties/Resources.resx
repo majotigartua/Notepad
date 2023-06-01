@@ -147,9 +147,6 @@
   <data name="EMPTY_FIELDS_LABEL" xml:space="preserve">
     <value>No field can be left empty.</value>
   </data>
-  <data name="JSON_DESERIALIZE_ERROR_MESSAGE" xml:space="preserve">
-    <value>Could not deserialize the response in JSON.</value>
-  </data>
   <data name="LOGIN_BUTTON" xml:space="preserve">
     <value>Login</value>
   </data>

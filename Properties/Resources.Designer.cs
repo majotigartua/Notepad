@@ -151,15 +151,6 @@ namespace Notepad.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Could not deserialize the response in JSON..
-        /// </summary>
-        public static string JSON_DESERIALIZE_ERROR_MESSAGE {
-            get {
-                return ResourceManager.GetString("JSON_DESERIALIZE_ERROR_MESSAGE", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Busca una cadena traducida similar a Login.
         /// </summary>
         public static string LOGIN_BUTTON {

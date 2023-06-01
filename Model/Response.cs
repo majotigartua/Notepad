@@ -1,13 +1,15 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.Generic;
+using System.Xml.Linq;
 
 namespace Notepad.Model
 {
     public class Response
     {
-        public int Code { get; set; }
         [JsonProperty("error")]
         public bool Error { get; set; }
+        [JsonProperty("code")]
+        public int Code { get; set; }
         [JsonProperty("message")]
         public string Message { get; set; }
         [JsonProperty("note")]
@@ -26,5 +28,11 @@ namespace Notepad.Model
         public Session Session { get; set; }
         [JsonProperty("user")]
         public User User { get; set; }
+
+
+        public override string ToString()
+        {
+            return string.Concat(Code, " - ", Message);
+        }
     }
 }
